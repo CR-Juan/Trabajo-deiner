@@ -1,0 +1,122 @@
+.traffic-light-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.traffic-light-pole {
+  display: none; /* Sin poste para diseño más limpio */
+}
+
+.traffic-light-box {
+  background: linear-gradient(to bottom, #2d2d2d, #1a1a1a);
+  border: 4px solid #444;
+  border-radius: 15px;
+  padding: 15px 12px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.9),
+    inset 0 3px 8px rgba(255, 255, 255, 0.1);
+  width: 90px;
+}
+
+.light-label {
+  text-align: center;
+  color: #ffa500;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(255, 165, 0, 0.6);
+  font-family: 'Impact', sans-serif;
+  transform: none !important; /* Always upright */
+}
+
+.lights-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  background: #050505;
+  padding: 15px 10px;
+  border-radius: 10px;
+  box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.95);
+}
+
+.light {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  opacity: 0.25;
+  transition: all 0.35s ease-out;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.light::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 40%;
+  height: 40%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.light.active {
+  opacity: 1;
+  border-color: currentColor;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.light.active::after {
+  opacity: 1;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.light.red {
+  background: linear-gradient(135deg, #e63946 0%, #a4161a 100%);
+  color: #ff0000;
+}
+
+.light.red.active {
+  box-shadow: 
+    0 0 40px rgba(230, 57, 70, 0.9),
+    0 0 80px rgba(230, 57, 70, 0.6),
+    inset 0 0 25px rgba(255, 150, 150, 0.7);
+}
+
+.light.yellow {
+  background: linear-gradient(135deg, #ffba08 0%, #d69f00 100%);
+  color: #ffba08;
+}
+
+.light.yellow.active {
+  box-shadow: 
+    0 0 40px rgba(255, 186, 8, 0.9),
+    0 0 80px rgba(255, 186, 8, 0.6),
+    inset 0 0 25px rgba(255, 240, 150, 0.7);
+}
+
+.light.green {
+  background: linear-gradient(135deg, #06d6a0 0%, #048a5e 100%);
+  color: #06d6a0;
+}
+
+.light.green.active {
+  box-shadow: 
+    0 0 40px rgba(6, 214, 160, 0.9),
+    0 0 80px rgba(6, 214, 160, 0.6),
+    inset 0 0 25px rgba(150, 255, 220, 0.7);
+}
